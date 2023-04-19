@@ -18,7 +18,6 @@ class SongView(ListCreateAPIView, PageNumberPagination):
         return Song.objects.filter(album_id=self.kwargs.get("pk"))
     """ def get_queryset(self): """
     """ return Album.objects.all() """
-        
     """    Obtençao de musicas
         
         songs = Song.objects.filter(album_id=pk)
