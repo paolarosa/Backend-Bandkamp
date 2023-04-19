@@ -31,10 +31,9 @@ class SongViewTest(APITestCase):
         create_multiple_songs_with_album(
             user=self.user, songs_count=songs_count, album=self.album_2
         )
-
         response = self.client.get(self.BASE_URL)
         resulted_data = response.json()
-
+        print(resulted_data)
         # RETORNO CHAVES
         resulted_pagination_keys = set(resulted_data.keys())
         expected_pagination_keys = {"count", "next", "previous", "results"}
