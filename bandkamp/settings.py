@@ -32,9 +32,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = []
-RAILWAY_STATIC_URL = os.getenv("RAILWAY_STATIC_URL")
-if RAILWAY_STATIC_URL:
-    ALLOWED_HOSTS += [RAILWAY_STATIC_URL, "0.0.0.0"]
+
+RENDER_EXTERNAL_HOSTNAME = os.getenv("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS += [RENDER_EXTERNAL_HOSTNAME, "0.0.0.0"]
+
+#RAILWAY_STATIC_URL = os.getenv("RAILWAY_STATIC_URL")
+#if RAILWAY_STATIC_URL:
+#   ALLOWED_HOSTS += [RAILWAY_STATIC_URL, "0.0.0.0"]
+
+
 
 # Application definition
 DJANGO_APPS = [
@@ -144,13 +151,7 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 2,
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }  
-""" REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'PAGINATE_BY': 'page_custom',                 # Default to 10
-    'PAGINATE_BY_PARAM': 'page_size',  # Allow client to override, using `?page_size=xxx`.
-    'MAX_PAGINATE_BY': 2           # Maximum limit allowed when using `?page_size=xxx`.
-}
- """
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'bandkamp',
     'DESCRIPTION': 'Your project description',
